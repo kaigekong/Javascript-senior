@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM-node-relation</title>
+</head>
+
+<body>
+  <h1>Chrome-67.0.*</h1>
+  <!-- 列表 -->
+  <h3>ChildNodes</h3>
+  <ul id="relation">
+    <li>Child-1</li>
+    <li>Child-2</li>
+    <li>Child-3</li>
+    <li>Child-4</li>
+    <li>Child-5</li>
+    <li>Child-6</li>
+  </ul>
+  <!-- 关系值 -->
+  <h3>ChildNodes relation </h3>
+  <ol id="output_childNodes">
+  </ol>
+
+  <!-- 关系值（Element） -->
+  <h3>Children relation</h3>
+  <ol id="output_children">
+  </ol>
+
+  <script>
+    const _relation = document.querySelector('#relation');
+    const _output_child_nodes = document.querySelector('#output_childNodes');
+    const _output_children = document.querySelector('#output_children');
+
+    let _outArr_child_nodes = [],
+      _outArr_children = [];
+
+    //ChildNodes
+    _outArr_child_nodes.push(`<li>childNodes.length：${_relation.childNodes.length}</li>`);
+    _outArr_child_nodes.push(`<li>childNodes[0]：${_relation.childNodes[0].innerHTML}</li>`);
+    _outArr_child_nodes.push(`<li>childNodes.item(0)：${_relation.childNodes.item(0).innerHTML}</li>`);
+    _outArr_child_nodes.push(`<li></li>`);
+    _outArr_child_nodes.push(`<li></li>`);
+    _output_child_nodes.innerHTML = _outArr_child_nodes.join('');
+
+
+    //Children
+    _outArr_children.push(`<li>children.length：${_relation.children.length}</li>`);
+
+    _outArr_children.push(`<li>children[0]：${_relation.children[0].innerHTML}</li>`);
+    _outArr_children.push(`<li>children.item(0)：${_relation.children.item(0).innerHTML}</li>`);
+
+    _outArr_children.push(`<li>children.firstChild：${_relation.firstElementChild.innerHTML}</li>`);
+    _outArr_children.push(
+      `<li>children.firstChild.previousElementSibling：${_relation.firstElementChild.previousElementSibling}</li>`);
+    _outArr_children.push(
+      `<li>children.firstChild.nextElementSibling：${_relation.firstElementChild.nextElementSibling.innerHTML}</li>`);
+
+    _outArr_children.push(`<li>children.item(3)：${_relation.children.item(3).innerHTML}</li>`);
+    _outArr_children.push(
+      `<li>children.item(3).previousElementSibling：${_relation.children.item(3).previousElementSibling.innerHTML}</li>`
+    );
+    _outArr_children.push(
+      `<li>children.item(3).nextElementSibling：${_relation.children.item(3).nextElementSibling.innerHTML}</li>`);
+
+    const _lastElementChild = _relation.lastElementChild;
+    _outArr_children.push(`<li>children.lastChild：${_lastElementChild.innerHTML}</li>`);
+    _outArr_children.push(
+      `<li>children.lastChild.previousElementSibling：${_lastElementChild.previousElementSibling.innerHTML}</li>`
+    );
+    _outArr_children.push(
+      `<li>children.lastChildn.nextElementSibling：${_lastElementChild.nextElementSibling}</li>`);
+    _output_children.innerHTML = _outArr_children.join('');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BOM-screen</title>
+</head>
+
+<body>
+  <h1>Chrome-67.0.*</h1>
+  <hgroup id="hg">
+
+  </hgroup>
+  <script>
+    const _screen = window.screen;
+
+    const _fragment = document.createDocumentFragment();
+
+    const _ndHg = document.querySelector('#hg');
+
+    const _props = [
+      'availWidth',
+      'availHeight',
+      'availTop',
+      'availLeft',
+      'bufferDepth',
+      'colorDepth',
+      'deviceXDPI',
+      'deviceYDPI',
+      'fontSmoothingEnabled',
+      'width',
+      'height',
+      'top',
+      'left',
+      'logicalXDPI',
+      'logicalYDPI',
+      'pixelDepth',
+      'updateInterval'
+    ];
+
+    let _ndH = null;
+    _props.forEach(item => {
+
+      _ndH = document.createElement('h4');
+
+      _ndH.innerText = `${item}：${_screen[item]}`;
+
+      _fragment.appendChild(_ndH);
+    });
+
+    _ndHg.appendChild(_fragment);
+
+  </script>
+</body>
+
+</html>

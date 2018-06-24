@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM-Node-type-name-value</title>
+</head>
+
+<body>
+  <h1>Chrome-67.0.*</h1>
+
+  <!-- nodeType -->
+  <h3>Node Type</h3>
+  <ul id="nodeTyps"></ul>
+
+  <script>
+    const _ndTyps = document.querySelector('#nodeTyps');
+
+    let _tmpArr = [];
+
+    const _typsArr = [
+      'ELEMENT_NODE',
+      'ATTRIBUTE_NODE',
+      'TEXT_NODE',
+      'CDATA_SECTION_NODE',
+      'ENTITY_REFERENCE_NODE',
+      'ENTITY_NODE',
+      'PROCESSING_INSTRUCTION_NODE',
+      'COMMENT_NODE',
+      'DOCUMENT_NODE',
+      'DOCUMENT_TYPE_NODE',
+      'DOCUMENT_FRAGMENT_NODE',
+      'NOTATION_NODE'
+    ];
+    _typsArr.forEach(item => {
+      _tmpArr.push(`<li>${item}：${Node[item]}</li>`);
+    });
+
+    _ndTyps.innerHTML = _tmpArr.join('');
+  </script>
+
+  <!-- nodeName nodeValue -->
+  <h3 id="nodeNameAndValue">&lt;p&gt; Node Name/Value &lt;/p&gt;</h3>
+
+  <p id="outContent"></p>
+
+  <script>
+    const _ndNodeNameAndValue = document.querySelector('#nodeNameAndValue');
+    const _ndOutContent = document.querySelector('#outContent');
+    _ndOutContent.innerHTML =
+      `&lt;p&gt; nodeName：${_ndOutContent.nodeName}</br>&lt;p&gt; nodeValue：${_ndOutContent.nodeValue}`;
+  </script>
+</body>
+
+</html>
