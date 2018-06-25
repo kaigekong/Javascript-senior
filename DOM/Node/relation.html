@@ -20,60 +20,46 @@
     <li>Child-5</li>
     <li>Child-6</li>
   </ul>
-  <!-- 关系值 -->
-  <h3>ChildNodes relation </h3>
-  <ol id="output_childNodes">
-  </ol>
+  <h3>ChildNodes and Children different </h3>
+  <div id="different"></div>
 
+  <h3>ChildNodes and Children same </h3>
   <!-- 关系值（Element） -->
-  <h3>Children relation</h3>
-  <ol id="output_children">
+  <ol id="same">
   </ol>
 
   <script>
     const _relation = document.querySelector('#relation');
-    const _output_child_nodes = document.querySelector('#output_childNodes');
-    const _output_children = document.querySelector('#output_children');
+    const _different = document.querySelector('#different');
+    const _same = document.querySelector('#same');
 
-    let _outArr_child_nodes = [],
-      _outArr_children = [];
+    let _differentArr = [],
+      _sameArr = [];
 
-    //ChildNodes
-    _outArr_child_nodes.push(`<li>childNodes.length：${_relation.childNodes.length}</li>`);
-    _outArr_child_nodes.push(`<li>childNodes[0]：${_relation.childNodes[0].innerHTML}</li>`);
-    _outArr_child_nodes.push(`<li>childNodes.item(0)：${_relation.childNodes.item(0).innerHTML}</li>`);
-    _outArr_child_nodes.push(`<li></li>`);
-    _outArr_child_nodes.push(`<li></li>`);
-    _output_child_nodes.innerHTML = _outArr_child_nodes.join('');
+    // Different
+    _differentArr.push(`<p>childNodes.length：${_relation.childNodes.length}</p>`);
+    _differentArr.push(`<p>children.length：${_relation.children.length}</p>`);
+    _different.innerHTML = _differentArr.join('');
 
+    // Same
+    _sameArr.push(`<li>children[0]&childNodes[0]：${_relation.children[0].innerHTML}</li>`);
+    _sameArr.push(`<li>children.item(0)&childNodes.item(0)：${_relation.children.item(0).innerHTML}</li>`);
 
-    //Children
-    _outArr_children.push(`<li>children.length：${_relation.children.length}</li>`);
+    const _firstElementChild = _relation.firstElementChild;
+    _sameArr.push(`<li>firstElementChild：${_firstElementChild.innerHTML}</li>`);
+    _sameArr.push(`<li>firstElementChild.previousElementSibling：${_firstElementChild.previousElementSibling}</li>`);
+    _sameArr.push(`<li>firstElementChild.nextElementSibling：${_firstElementChild.nextElementSibling.innerHTML}</li>`);
 
-    _outArr_children.push(`<li>children[0]：${_relation.children[0].innerHTML}</li>`);
-    _outArr_children.push(`<li>children.item(0)：${_relation.children.item(0).innerHTML}</li>`);
-
-    _outArr_children.push(`<li>children.firstChild：${_relation.firstElementChild.innerHTML}</li>`);
-    _outArr_children.push(
-      `<li>children.firstChild.previousElementSibling：${_relation.firstElementChild.previousElementSibling}</li>`);
-    _outArr_children.push(
-      `<li>children.firstChild.nextElementSibling：${_relation.firstElementChild.nextElementSibling.innerHTML}</li>`);
-
-    _outArr_children.push(`<li>children.item(3)：${_relation.children.item(3).innerHTML}</li>`);
-    _outArr_children.push(
-      `<li>children.item(3).previousElementSibling：${_relation.children.item(3).previousElementSibling.innerHTML}</li>`
-    );
-    _outArr_children.push(
-      `<li>children.item(3).nextElementSibling：${_relation.children.item(3).nextElementSibling.innerHTML}</li>`);
+    const _itemElementChild = _relation.children.item(3);
+    _sameArr.push(`<li>children.item(3)：${_itemElementChild.innerHTML}</li>`);
+    _sameArr.push(`<li>children.item(3).previousElementSibling：${_itemElementChild.previousElementSibling.innerHTML}</li>`);
+    _sameArr.push(`<li>children.item(3).nextElementSibling：${_itemElementChild.nextElementSibling.innerHTML}</li>`);
 
     const _lastElementChild = _relation.lastElementChild;
-    _outArr_children.push(`<li>children.lastChild：${_lastElementChild.innerHTML}</li>`);
-    _outArr_children.push(
-      `<li>children.lastChild.previousElementSibling：${_lastElementChild.previousElementSibling.innerHTML}</li>`
-    );
-    _outArr_children.push(
-      `<li>children.lastChildn.nextElementSibling：${_lastElementChild.nextElementSibling}</li>`);
-    _output_children.innerHTML = _outArr_children.join('');
+    _sameArr.push(`<li>lastElementChild：${_lastElementChild.innerHTML}</li>`);
+    _sameArr.push(`<li>lastElementChild.previousElementSibling：${_lastElementChild.previousElementSibling.innerHTML}</li>` );
+    _sameArr.push(`<li>lastElementChildn.nextElementSibling：${_lastElementChild.nextElementSibling}</li>`);
+    _same.innerHTML = _sameArr.join('');
   </script>
 </body>
 
